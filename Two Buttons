@@ -1,0 +1,27 @@
+/*
+Pushbuttons sketch modified from sketch 5.1 in the Arduino Cookbook.
+Switches connected to pins 2 & 3 lights the LED on pin 9 when pressed together
+In this case both switches need to be closed (HIGH) to enable pin 9 to write HIGH.
+The switches in this case are not physically connected but the states of each switch are determined by the 'digitalRead' function and the use of an 'if' statement in the sketch.
+This could be handy if you want to initiate a particular action only if two sensors are activated.
+*/
+const int ledPin = 9; // choose the pin for the LED
+const int button1 = 2; // choose the input pin (for 1st pushbutton)
+const int button2 = 3; // choose the input pin (for 2nd pushbutton)
+void setup() {
+pinMode(ledPin, OUTPUT); // declare LED as output
+pinMode(button1, INPUT); // declare pushbutton as input
+pinMode(button1, INPUT); // declare pushbutton as input
+}
+void loop(){
+int valA = digitalRead(button1); // read button state
+int valB = digitalRead(button2); // read button state
+if (valA == HIGH && valB == HIGH ) // check if the input is HIGH for both buttons
+{
+digitalWrite(ledPin, HIGH); // turn LED on if both switches are pressed
+}
+else
+{
+digitalWrite(ledPin, LOW); // turn LED off
+}
+}
