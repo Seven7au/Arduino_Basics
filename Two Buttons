@@ -16,7 +16,7 @@ pinMode(button1, INPUT); // declare pushbutton as input
 void loop(){
 int valA = digitalRead(button1); // read button state
 int valB = digitalRead(button2); // read button state
-if (valA == HIGH && valB == HIGH ) // check if the input is HIGH for both buttons
+if (valA == HIGH && valB == HIGH ) // check if the input is HIGH for both buttons - you can change this to ||(or) or !(not)
 {
 digitalWrite(ledPin, HIGH); // turn LED on if both switches are pressed
 }
