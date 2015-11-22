@@ -1,0 +1,23 @@
+/* Aduino sketch adapted from open source code 
+allowing the input from a photoresistor to control
+the output tone to a piezo buzzer
+*/
+int buzzPin = 9; // the pin that the buzzer is attached to
+void setup() {
+
+Serial.begin(9600);// initialize serial communication at 9600 bits per second
+pinMode(buzzPin, OUTPUT); //set pin 9 as an output
+}
+
+void loop() {
+// read the input on analog pin 0:
+int light = analogRead(A0);
+// print out the value read to the serial monitor:
+Serial.print("Light input is: ");
+Serial.println(light);
+  if (light < 30)//this will need to be adjusted to suit your conditions
+  {
+    tone(9, 500, 20); // play a tone of 500Hz for 20 ms on pin 9
+  }
+  
+}
