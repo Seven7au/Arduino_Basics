@@ -1,0 +1,27 @@
+/* Aduino sketch adapted from open source code 
+allowing the input from a photoresistor to control
+the brightness of an LED
+*/
+#include <Servo.h>
+Servo myservo;  // create servo object to control a servo
+
+void setup() {
+// initialize serial communication at 9600 bits per second:
+Serial.begin(9600);
+myservo.attach(9);  // attaches the servo on pin 9 to the servo object
+}
+// the loop routine runs over and over again forever:
+void loop() {
+// read the input on analog pin 0:
+int light = analogRead(A0);
+// print out the value you read:
+Serial.print("Light input is: ");
+Serial.println(light);
+delay(10);
+int pos = map(light, 0, 320, 0, 180);     // scale it to use it with the servo (value between 0 and 180) 
+myservo.write(pos);                  // sets the servo position according to the scaled value 
+Serial.print("Servo position is: ");
+Serial.println(pos);
+delay(100);
+}
+
